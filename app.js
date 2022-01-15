@@ -1,66 +1,52 @@
-console.log("Hello World");
-//Output for var: 3 3 3
-// for (var i = 0; i < 3; i++) {
-//     setTimeout(function() {
-//         console.log(i);
-//     })
-// }
-// for (let i = 0; i < 3; i++) {
-//     setTimeout(function() {
-//         console.log(i);
-//     })
-// }
-// for (var i = 0; i < 3; i++) {
-       
-//             console.log(i);
-        
-//     }
-//     console.log(i);
-const fun = function(a, b) {
-        return a + b;
+/*************************Strings */
+const str1 = "abc";
+const str2 = "abc";
+console.log(`str1 == str2 is ${str1 == str2}`)
+console.log(`"abc" < "ab" is ${str1 < "ab"}`)
+console.log(`"123" > 23 is ${"123" > 23}`);
+console.log(`"123" > "23" is ${"123" > "23"}`);
+/****************************************** */
+//if  logical expression contains both string and number, JS will convert string to number
+//if string doesn't contain a number a result of conversion will be NaN
+//In any logical expression if there is NaN, then the result will be false
+console.log(`"abc" > 23 is ${"abc" > 23}`);
+console.log(`"abc" < 23 is ${"abc" < 23}`);
+console.log(`"abc" != 23 is ${!("abc" == 23)}`)
+/********************************************* */
+function stringProcessing(str) {
+        const strP = "" + str;
+       console.log(`"${str}"[4] is ${str[4]}`);
+       console.log(`length of "${str}" is ${strP.length}`);
+       console.log(`"${str}" includes "abc" is ${strP.includes("abc")}`);
+       console.log(`substring of "${str}" beginning from index 2 to index 5 is ${strP.substring(2, 5)}`);
+       console.log(`index of substring "ll" in the "${str}" is ${strP.indexOf("ll")}; last index of substring "ll" in the "${str}" is  ${strP.lastIndexOf("ll")}`)
+
 }
-let a = 5;
-// console.log(a ** 2);
- console.log(fun(10, 20));
-//console.log(a(10, 20)); error
-//console.log(fun ** 2); NaN
-console.log("12" + 12, '"12" + 12') ; //JS defines that operator + exists for strings, that's why number 12 will be converted to string
-console.log("12" - 12); //JS defines that operator - doesn't exist for strings, that's why string "12" will be converted to number
-console.log("ab" - 12); //....JS will try covert "ab" to number; as a result of this there will be value NaN. 
-//sometimes there is a need to explicit conversion from string to a number
-//"+" unary is the simplest way for the explicit conversion of a string to a number
-console.log(`+"12" + 12 = ${+"12" + 12}`)
-// Hw #definition
-//1. using only two letters "a", "s" print out word ananas case insensitive AnaNAS, 
-//2. write function calculate that can perform any arithmetic operation on two numbers (*, /, +, -);
-//3. write any example for running the following expression fun(5)(10, 3)
-console.log(`a`+ fun**2 +`as`);
+//stringProcessing("abcd*lmn*ll(oo&&ttll");
+/********************HW 11 definition */
+// function encode(num, base) {
+//         //base from 2 to 10
+//         let res="";
+//         do {
+//                 const digit = Math.trunc(num % base);
+//                 const symb = getSymbol(digit);
+//                 res = symb + res;
+//                 num = Math.trunc(num / base);
 
-// let = a;
-// let b;
-// let action;
-let res = function calculator(a, b , action)
-{
-if (action == 1)  return a + b;
-else if (action == 2)  return a - b;
-else if (action == 3) return a * b;
-else if (action == 4)
-{
-	if (b != 0) return a / b;
-	else
-		console.log("ERROR: divide by zero");
+//         } while(num >= 1);
+//         return res;
+// }
+// function getSymbol(digit) {
+//       //base from 2 to 10 
+//       console.log(digit);
+//       return "" + digit; //it will work only for base <= 10 
+// }
+console.log(encode(10, 2))
+// write function 
+function encode (num, codingString) {
+        //codingString - any string with no repeated symbols
+        // you should validate codingString doesn't contain repeated symbols
+        //base = length of codingString
+        // algorithm the same as specified above
+        // getSymbol(digit, codingString) using operator []
 }
-else
-	console.log("ERROR: Wrong action");
-    
-    }
-    console.log(res(10,0,4));
-  
-
-function sum(num){
-   return function(c,d){
-   return num + c + d;
-    }
-   }
-
-console.log(sum(5)(10,3));
