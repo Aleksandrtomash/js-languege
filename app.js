@@ -48,10 +48,26 @@ console.log(ar3)
 // task 2
 // myMap (kak forEach), 
 
+/***********************cw 14***************** */
 
+const ar20 = [13, 17, 20, 23, 2, 40];
+const arEvanOdd = ar20.filter((n, i, a) => a.lengthn % 2 == 0 ? n % 2 == 0 : n % 2 == 1);
+console.log(arEvanOdd);
 
- let arr = ['20', 22, ' year whan korona dai'];
- arr.forEach((function(e, i , ar) => console.log( `${e} + ${i} + ${arr}`));
- 
-    
-    
+////////////////////hw14//////////
+//write myFiltr(array,callback) based on my forEach
+//callback - function whith 3 possible parameters: element, index, array
+
+//write myFiltr(array,callback, initialResult) based on my forEach
+     
+/**************************************************** */
+////////////////////REDUCE///////////////////////// МОГУТ БЫТЬ 3 ПАРАМЕТРА КАК И FOReACH , MAP, FILTR
+
+const result = ar20.reduce((res,el) => res + el, 0);
+console.log(result);
+const max = ar20.reduce((max, el) => el > max ? el : max, ar20[0]);
+console.log(max);
+
+// reduce with no 2 argument
+const result1 = ar20.reduce((res,el) => res + el);
+console.log(result1);
