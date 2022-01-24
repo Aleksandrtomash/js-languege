@@ -1,19 +1,26 @@
 
+//////// myforEach////////
 
 const arr = [10, 20, 30, 40, 50];
-function myForEach(el, ind, arr){
-
- arr[ind] = el + '#';
- console.log(arr)
+let str = '';
+ function myForEach (array, calBackFunc) {
+ for(let i = 0; i < array.length; i++){
+    calBackFunc(array[i], i, array);
 }
-arr.forEach(myForEach);
+ }
+ myForEach(arr, ind  => str += '#' + ind);
+    console.log(str);
 
-///////////////////////////////////////////////////////
 
-const arr = [10, 20, 30, 40, 50];
-function myMap(el, ind, arr){
+////////myMap//////////////////////
 
- arr[ind] = el * 10;
- console.log(arr)
-}
-arr.myMap(arr);
+const ar1 = [10, 20, 30, 40, 50];
+
+ function myMap (array, calBackFunc1) {
+ const arr1 = [];
+     myForEach(array,(n, i, ar) => arr1.push(calBackFunc1(n, i, ar)));
+       return arr1;
+ }
+ const ar2 = myMap(ar1, n  => n = n * 2);
+
+    console.log(ar2);
