@@ -1,73 +1,42 @@
-///////////////////ForEach////////////////////
+const person1 = {id: 123, name: 'Moshe', address: {city: 'Lod', sreet: 'Sokolov'}}; //const person1 ссылка на объект, сравниваются только адреса
+const person2 = {id: 123, name: 'Moshe', address: {city: 'Lod', sreet: 'Sokolov'}};
 
-const ar = [-10, 50, -12, 80, 40];
-ar.push(70);
-// str - "-10#50#-12#80#40#70#"
+const person3 = person1;
+console.log(`person1 == person2 is ${person1 == person2}`);
+console.log(`"123" == 123 is ${'123' == 123}`);
 
-// let str = '';
-// ar.forEach(function(n){                                     ******1*******
-//     str += n + '#';
-// })
-//str = str.substring(0, str.length - 1);
+// === проверяет не только содержимое,ю но и типы, сравнивает адреса
 
-// str - "-10#50#-12#80#40#70"
-// const lastSharpeIndex = str.lastIndexOf('#')
-// const str1 = str.substring(0, lastSharpeIndex);
-// const str2 = str.substring(lastSharpeIndex + 1);
-// str = str1 + str2;
+console.log(`"123" === 123 is ${'123' === 123}`);
+console.log(`person1 == person3 is ${person1 == person3}`);
 
-/*******************solution based on forEach from second number *********2**********/ 
-// const ar1 = ar.slice(1);
-// let str = '' + ar[0];
-// ar1.forEach(n => str += '#' + n);
-// console.log(str);
+console.log(`JSON.stringify(person1) === JSON.stringify(person2) is ${JSON.stringify(person1) // из объекта получаем строку
+    === JSON.stringify(person2)}`);  
 
-/***************printing out number of element , element , length********** */
-// 1 of 5 = -10
-ar.forEach((n, i, a) => console.log(`${i + 1} of ${a.length} - ${n}`));
-/****************HW****Task 1******** */
-// write function myForEach(array,calback - function)
-// array - being iterated array
-// calback-function   -  function that is will be called for each element of array
-// calback-function should take 3 arguments : current element, current index,  being iterated array
-//example  ar1.forEach(n => str += '#' + n);
+    console.log(JSON.stringify(person1));
+    console.log(person1.toString());
 
-// myForEach(array, n => str += '#' + n);
+    console.log(`name ofperson1 is ${person1.name}`); // добираемся к элемнту объкта
+    console.log(`person1 lives in city ${person1.address.city}`); // 2 to4ki
 
-/******************************"MAP"******************** */
-// USE CASE OF APPLYING METHOD MAP : YOU WHANT TO CREATE NEW ARRAY WITH ELEMENTS THAT ARE RECIVED AS RESULT OF SOM
-// EXAMPLE : 
-const ar2 = ar.map(n => n * 2);
-console.log(ar2)
+    Object.keys(person1).forEach(k => console.log(k));// получаеи массив ключей и можем работать с методами массивов, работа с ключами
+    Object.values(person1).forEach(v => console.log(v)); // работа со значениями
+    Object.entries(person1).forEach(e => console.log(e)); //array of arrays - [key, value]
 
-//const ar3 = ar.map(n => `<li>${n}</li>`);
-const ar3 = ar.map((n ,i, a ) => `<li>${i + 1} of ${a.length} - ${n}</li>`);
-console.log(ar3)
+    function createAddress(city, street){
 
+      //  {city: city, street: street} <==> {city, street} oto davar
+        return {city: city, street: street}
+    }
+    function createPerson(id, name, address){
+return {id, name, address};
+    }
+    const persons = [
+        createPerson(123, "Vasya", createAddress ("Rehovot", "parshani")),
+        createPerson(124, "Olya", createAddress ("Rehovot", "Plaut")),
+        createPerson(125, "Tolya", createAddress ("Tel - aviv ", "Disengof"))
+    ]
 
-// task 2
-// myMap (kak forEach), 
+    ///// 1 /// исп методы масивов, что бы найти всех кто живет в реховоте
+    ///// 2 ///  перон кто не живет в реховоте , перенести на первое место
 
-/***********************cw 14***************** */
-
-const ar20 = [13, 17, 20, 23, 2, 40];
-const arEvanOdd = ar20.filter((n, i, a) => a.lengthn % 2 == 0 ? n % 2 == 0 : n % 2 == 1);
-console.log(arEvanOdd);
-
-////////////////////hw14//////////
-//write myFiltr(array,callback) based on my forEach
-//callback - function whith 3 possible parameters: element, index, array
-
-//write myFiltr(array,callback, initialResult) based on my forEach
-     
-/**************************************************** */
-////////////////////REDUCE///////////////////////// МОГУТ БЫТЬ 3 ПАРАМЕТРА КАК И FOReACH , MAP, FILTR
-
-const result = ar20.reduce((res,el) => res + el, 0);
-console.log(result);
-const max = ar20.reduce((max, el) => el > max ? el : max, ar20[0]);
-console.log(max);
-
-// reduce with no 2 argument
-const result1 = ar20.reduce((res,el) => res + el);
-console.log(result1);
