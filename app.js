@@ -24,3 +24,11 @@ const ar1 = [10, 20, 30, 40, 50];
  const ar2 = myMap(ar1, n  => n = n * 2);
 
     console.log(ar2);
+
+    /////////myFiltr/////////
+
+    const arFiltr = [-2, 5, 8, 3, 9, -12, 20, 0];
+
+    const newArFiltr = arFiltr.filter(function(item, i, arr){
+
+    });
