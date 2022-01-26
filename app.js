@@ -29,14 +29,27 @@ console.log(`JSON.stringify(person1) === JSON.stringify(person2) is ${JSON.strin
         return {city: city, street: street}
     }
     function createPerson(id, name, address){
-return {id, name, address};
-    }
+//return {id, name, address};
+    
     const persons = [
         createPerson(123, "Vasya", createAddress ("Rehovot", "parshani")),
         createPerson(124, "Olya", createAddress ("Rehovot", "Plaut")),
-        createPerson(125, "Tolya", createAddress ("Tel - aviv ", "Disengof"))
+        createPerson(125, "Tolya", createAddress ("Tel - aviv ", "Disengof")),
+        createPerson(126, "Sara", createAddress('Lod', 'Sokolov'))
     ]
+    }
+//     let personRehovot = persons.filter(obj => obj.city == "Rehovot");  //.sort((a,b) => (b.city - a.city));
+// console.log(personRehovot);
 
     ///// 1 /// исп методы масивов, что бы найти всех кто живет в реховоте
     ///// 2 ///  перон кто не живет в реховоте , перенести на первое место
+    getPersonsCity(persons, "Rehovot"){
 
+    const persons = [
+        createPerson(123, "Vasya", createAddress ("Rehovot", "parshani")),
+        createPerson(124, "Olya", createAddress ("Rehovot", "Plaut")),
+        createPerson(125, "Tolya", createAddress ("Tel - aviv ", "Disengof")),
+        createPerson(126, "Sara", createAddress('Lod', 'Sokolov'))
+    ]
+    let personRehovot = persons.filter(obj => obj.createPerson.);
+}
