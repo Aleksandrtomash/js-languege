@@ -30,13 +30,13 @@ const ar1 = [10, 20, 30, 40, 50];
 
     function myFiltr(array, callbackFunc){
         const res = [];
-
+        myForEach(array, (n,i,a) => callbackFunc (n, i, a) ? res.push(n) : 0);
+        return res
     }
-    const arFiltr = [-2, 5, 8, 3, 9, -12, 20, 0];
+    const ar30 = [ 1,2,3,4,5,6,7,8,9,10] 
+  const resFiltr = myFiltr(ar30, (n, i, a) => a.length %2 == 0 ? n%2 == 0 : n%2 == 1);
+  console.log(resFiltr);
 
-    const newArFiltr = arFiltr.filter(function(item, i, arr){ 
-
-    });
 
 /////////////myReduce////////////////
 
