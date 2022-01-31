@@ -90,12 +90,19 @@ function displayOccurrences(array) {
             const res = e2[1] - e1[1];
             return res === 0 ? e1[0].localeCompare(e2[0]) :  res;
     }).forEach(e => console.log(`${e[0]} -> ${e[1]}`))
-
-
 }
+
+
 const ar = ["bc", "lmn", "d", "d", "lmn", "a", "lmn", "a"];
 displayOccurrences(ar);
+
+
+
 /**********************************************HW #15 task1 */
+
+function getStartObj (arr3){
+    
+}
 //refactoring of displayOccurrences function from the classwork #15
 //lines 92 - 99 should be a separated function
 //that separated function should apply standard methods like reduce
