@@ -70,26 +70,37 @@ const person4 = new WageEmployee(126, `Asaf`, 1000, 10, 100);
 console.log(`person4 is: ${person4}`);
 
 /*********************************HW#17************************* */
-const person = [
+ const persons = [
         new Child(100, `Olya`, `Shalom`),,
         new Child(101, `Serega`, `boker`),
         new Child(102, `Kolya`, `Shalom`),
         new Employee(103, `Vasya`, 1000),
-        new WageEmployee(104, `Tolya`, 1000, 10, 100)
-]
-function countofPersonType(person,type){
+         new WageEmployee(104, `Tolya`, 1000, 10, 100)
+ ]
+ function countofPersonType(person,type){
         // return count of persons of the given type
         // Example: 
         // countofPersonType(persons, `WageEmploee`)----> 1
 }
-function computeSalaryBudget(persons){
-        // returns total salary of all emploeee objects in the given array
-        //Example:
-        //computeSalaryBudget(persons)---> 3000
-        //
+ function computeSalaryBudget(persons){
+//         // returns total salary of all emploeee objects in the given array
+//         //Example:
+//         //computeSalaryBudget(persons)---> 3000
+         const allEmployes = persons.filter(p => !!p.computeSalary);
+         const salaryValues = allEmployes.map(p => p.computeSalary);
+         return salaryValues.reduce((res,cur) => res + cur);
+ }
+ function countChildrenGindergarten(persons,kindergarten){
+//         // returns number of children in the given kindergarten
+//         //
+//         //countChildrenGindergarten(persons, shalom)---> 2
+ }
+
+function testOutput(fun, expected){
+        console.log(`function: ${fun.name} expected result: ${expected}; actual result: ${fun()}`);
 }
-function countChildrenGindergarten(persons,kindergarten){
-        // returns number of children in the given kindergarten
-        //
-        //countChildrenGindergarten(persons, shalom)---> 2
-}
+
+//testOutput(person4.computeSalary.bind(person4),2000)
+//testOutput(computeSalaryBudget.bind(undefined, persons))
+testOutput(countofPersonType.bind(undefined, persons, 'Child'), 3);
+
