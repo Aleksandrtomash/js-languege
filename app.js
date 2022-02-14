@@ -1,26 +1,19 @@
-
-let res = function calculator(a, b , action)
-{
-if (action == 1)  return a + b;
-else if (action == 2)  return a - b;
-else if (action == 3) return a * b;
-else if (action == 4)
-{
-	if (b != 0) return a / b;
-	else
-		console.log("ERROR: divide by zero");
+function getRandomNumber(min, max){
+        min <= max || ([min , max] = [max, min]);
+return Math.floor(min + Math.random() * ((max + 1) - min));
 }
-else
-	console.log("ERROR: Wrong action");
-    
-    }
-    console.log(res(10,0,4));
-  
+console.log(getRandomNumber(15,5));
 
-function sum(num){
-   return function(c,d){
-   return num + c + d;
-    }
-   }
 
-console.log(sum(5)(10,3));
+
+function concatinate(prefix){
+        return (...args) => [prefix, ...args].join('');
+}
+const concatApp = concatinate('App - ')
+const concatmessage = concatApp('Test status: Done', " good" , ' very');
+console.log(concatmessage);
+
+
+// a || b; // 0 || b => , 0 is false
+// a ?? b; // 0 ?? b => 0, 0 is not underfined or null
+// a && b / a; // 
