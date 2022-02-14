@@ -1,106 +1,63 @@
-class Person {
-        #id;
-        #name;
-        constructor(id, name){
-                this.#id = id;
-                this.#name = name
-        }
-        getId(){
-               return this.#id;
-        }
-        getname(){
-            
-                return this.#name
-        }
-        toString(){
-                return  `id: ${this.#id}; name: ${this.#name}`
-                }
+const point ={
+        x: 3,
+        y: 4
+};
+function displaypointInSpase(z, t) {
+        //"this" - reference to any object having properties "x" and "y"
+        console.log(`x: ${this.x}, y: ${this.y} , z:  ${z}, t: ${t} `);
 }
-const person = new Person(123, `Moshe`);
-console.log(`my person is ${person}`);
+point.method = displaypointInSpase;
+point.method(10, 20);
+// displaypointInSpase.call(point, 10, 20);
+// displaypointInSpase.myBind(point, 10, 20)();
+// displaypointInSpase.apply(point, [ 10, 20] );
 
-class Employee extends Person{
-       #salary;
-       constructor(id, name, salary){
-            super(id, name); // call the constractor of the class Person
-            this.#salary = salary;
-       }
-       computeSalary(){
-               return this.#salary;
-       }
-       toString(){
-               return super.toString + ` salary: ${this.computeSalary()}`
-       }
-} 
-const person2 = new Employee(124, "Sara",5000);
-console.log(`person2 is ${person2}`)
-console.log(typeof(person2));
-console.log(person2.constructor.name); // tolko tak polu4aem imya konstruktora v js
-
-class Child extends Person{
-        #kindergarten
-        constructor(id, name, kindergarten){
-                super(id, name);
-                this.#kindergarten = kindergarten;
-        }
-        getKindergarten(){
-                return this.#kindergarten;
-        }
-        toString(){
-                return `${super.toString()} kindergarten: ${this.#kindergarten}`
+Function.prototype.myBind = function(thisObj, ...args){
+        // "This - reference to any functional object
+        // thisObject - reference to any object
+        
+        return (...params) => {
+                thisObj.method123456 = this;
+                const res = thisObj.method123456(...args.concat(params));
+                delete thisObj.method123456;
+                return res;
         }
 }
-const person3 = new Child(125, `Yakob`, `Shalom`);
-console.log(` person3 is: ${person3}`);
+/*************************************   1   ********************* */
 
-class WageEmployee extends Employee{
-        #hours
-        #wage
-        constructor(id, name, salary, hours, wage){
-                 super(id, name, salary);
-                 this.#hours = hours;
-                 this.#wage = wage;
-        }
-        computeSalary(){
-                return super.computeSalary() + this.#hours * this.#wage;
-        }
-      
-}
-const person4 = new WageEmployee(126, `Asaf`, 1000, 10, 100);
-console.log(`person4 is: ${person4}`);
+// arguments are passed at function call
+const funDisplay = displaypointInSpase.myBind(point);
+funDisplay(10,20); 
 
-/*********************************HW#17************************* */
- const persons = [
-        new Child(100, `Olya`, `Shalom`),,
-        new Child(101, `Serega`, `boker`),
-        new Child(102, `Kolya`, `Shalom`),
-        new Employee(103, `Vasya`, 1000),
-         new WageEmployee(104, `Tolya`, 1000, 10, 100)
- ]
- function countofPersonType(person,type){
-        // return count of persons of the given type
-        // Example: 
-        // countofPersonType(persons, `WageEmploee`)----> 1
-}
- function computeSalaryBudget(persons){
-//         // returns total salary of all emploeee objects in the given array
-//         //Example:
-//         //computeSalaryBudget(persons)---> 3000
-         const allEmployes = persons.filter(p => !!p.computeSalary);
-         const salaryValues = allEmployes.map(p => p.computeSalary);
-         return salaryValues.reduce((res,cur) => res + cur);
- }
- function countChildrenGindergarten(persons,kindergarten){
-//         // returns number of children in the given kindergarten
-//         //
-//         //countChildrenGindergarten(persons, shalom)---> 2
- }
+/**************************************  2  ********************** */
 
-function testOutput(fun, expected){
-        console.log(`function: ${fun.name} expected result: ${expected}; actual result: ${fun()}`);
+// all arguments are bound bythe method "myBind"
+const funDisplayArguments = displaypointInSpase.myBind(point, 10 , 20 );
+funDisplayArguments();
+
+/***************************************  3  ********************* */
+
+// mixed - part of arguments are bount by the method "myBind" and other part of argument are passed at function call
+const funDisplayMixed = displaypointInSpase.myBind(point, 10);
+funDisplayMixed(20);
+
+function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min) + min)
 }
 
-//testOutput(person4.computeSalary.bind(person4),2000)
-//testOutput(computeSalaryBudget.bind(undefined, persons))
-testOutput(countofPersonType.bind(undefined, persons, 'Child'), 3);
 
+
+
+function concatenation(prefix) {
+        prefix = 'App - '
+        const concatMessage = 'Test status: Done'
+        let res = prefix.concat(concatMessage)
+        console.log(res);
+        
+}
+console.log(`Task #1`)
+console.log(`Random number: ${getRandomNumber(1,200)}`);
+console.log(`Random number: ${getRandomNumber(200,1)}`);
+
+console.log(`Task #2`)
+concatenation()
